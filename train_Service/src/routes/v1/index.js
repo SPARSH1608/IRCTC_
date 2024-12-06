@@ -5,6 +5,7 @@ const {
   CityController,
   StationController,
   TrainInfoController,
+  CategoryController,
 } = require('../../controllers/index');
 
 router.get('/city', CityController.getAll);
@@ -24,5 +25,11 @@ router.get('/trainInfo', TrainInfoController.getAll);
 router.delete('/trainInfo/:id', TrainInfoController.destroy);
 router.get('/trainInfo/:id', TrainInfoController.get);
 router.patch('/trainInfo/:id', TrainInfoController.update);
+
+router.post('/category', CategoryController.create);
+router.get('/category', CategoryController.getAll);
+router.delete('/category/:id', CategoryController.destroy);
+router.get('/category/:id', CategoryController.get);
+router.patch('/category/:id', CategoryController.update);
 
 module.exports = router;
