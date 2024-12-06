@@ -12,6 +12,14 @@ module.exports = (sequelize, DataTypes) => {
       this.hasMany(models.Station, {
         foreignKey: 'city_id',
       });
+      this.hasMany(models.TrainStop, {
+        foreignKey: 'src_city_id',
+        as: 'SourceTrainStops',
+      });
+      this.hasMany(models.TrainStop, {
+        foreignKey: 'dest_city_id',
+        as: 'DestinationTrainStops',
+      });
     }
   }
   City.init(

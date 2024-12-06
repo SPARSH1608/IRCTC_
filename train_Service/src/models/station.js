@@ -13,6 +13,14 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: 'city_id',
         onDelete: 'CASCADE',
       });
+      this.hasMany(models.TrainStop, {
+        foreignKey: 'src_station_id',
+        as: 'SourceTrainStops',
+      });
+      this.hasMany(models.TrainStop, {
+        foreignKey: 'dest_station_id',
+        as: 'DestinationTrainStops',
+      });
     }
   }
   Station.init(
