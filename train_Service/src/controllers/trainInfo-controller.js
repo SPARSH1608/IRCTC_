@@ -1,14 +1,14 @@
-const { StationService } = require('../services/index');
+const { TrainInfoService } = require('../services/index');
 
-const stationService = new StationService();
+const trainInfoservice = new TrainInfoService();
 //POST -> req.body
 const create = async (req, res) => {
   try {
-    const response = await stationService.createStation(req.body);
+    const trainInfo = await trainInfoservice.createTrainInfo(req.body);
     return res.status(201).json({
-      data: response,
+      data: trainInfo,
       success: true,
-      message: 'Successfully created station',
+      message: 'Successfully created trainInfo',
       err: {},
     });
   } catch (error) {
@@ -16,7 +16,7 @@ const create = async (req, res) => {
     return res.status(500).json({
       data: {},
       success: false,
-      message: 'Not able to create station',
+      message: 'Not able to create trainInfo',
       err: error,
     });
   }
@@ -24,11 +24,11 @@ const create = async (req, res) => {
 //delete-> city/:id
 const destroy = async (req, res) => {
   try {
-    const response = await stationService.deleteStation(req.params.id);
+    const response = await trainInfoservice.deleteTrainInfo(req.params.id);
     return res.status(200).json({
       data: response,
       success: true,
-      message: 'Successfully deleted station',
+      message: 'Successfully deleted train info',
       err: {},
     });
   } catch (error) {
@@ -36,7 +36,7 @@ const destroy = async (req, res) => {
     return res.status(500).json({
       data: {},
       success: false,
-      message: 'Not able to delete station',
+      message: 'Not able to delete trainInfo',
       err: error,
     });
   }
@@ -44,11 +44,11 @@ const destroy = async (req, res) => {
 //GET-> /city/:id
 const get = async (req, res) => {
   try {
-    const response = await stationService.getStation(req.params.id);
+    const response = await trainInfoservice.getTrainInfo(req.params.id);
     return res.status(200).json({
       data: response,
       success: true,
-      message: 'Successfully fetched a station',
+      message: 'Successfully fetched a trainInfo',
       err: {},
     });
   } catch (error) {
@@ -56,7 +56,7 @@ const get = async (req, res) => {
     return res.status(500).json({
       data: {},
       success: false,
-      message: 'Not able to get the station',
+      message: 'Not able to get the trainInfo',
       err: error,
     });
   }
@@ -64,14 +64,14 @@ const get = async (req, res) => {
 //patch-> /city:id->req.body
 const update = async (req, res) => {
   try {
-    const response = await stationService.updateStation(
+    const response = await trainInfoservice.updateTrainInfo(
       req.params.id,
       req.body
     );
     return res.status(200).json({
       data: response,
       success: true,
-      message: 'Successfully updated a station',
+      message: 'Successfully updated  trainInfo',
       err: {},
     });
   } catch (error) {
@@ -79,7 +79,7 @@ const update = async (req, res) => {
     return res.status(500).json({
       data: {},
       success: false,
-      message: 'Not able to update station',
+      message: 'Not able to update trainInfo',
       err: error,
     });
   }
@@ -87,11 +87,11 @@ const update = async (req, res) => {
 
 const getAll = async (req, res) => {
   try {
-    const response = await stationService.getAllStation(req.query);
+    const trainInfo = await trainInfoservice.getAllTrainInfo(req.query);
     return res.status(200).json({
-      data: response,
+      data: trainInfo,
       success: true,
-      message: 'Successfully fetched all stations',
+      message: 'Successfully fetched all trainInfo',
       err: {},
     });
   } catch (error) {
@@ -99,7 +99,7 @@ const getAll = async (req, res) => {
     return res.status(500).json({
       data: {},
       success: false,
-      message: 'Not able to fetch station',
+      message: 'Not able to fetch trainInfo',
       err: error,
     });
   }
