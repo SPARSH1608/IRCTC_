@@ -3,7 +3,7 @@ const { Op } = require('sequelize');
 const { Station } = require('../models/index');
 
 class StationRepository {
-  async createStation({ name }) {
+  async createStation({ name, address, platform_count, city_id }) {
     try {
       const station = await Station.create({
         name,
@@ -18,43 +18,48 @@ class StationRepository {
     }
   }
 
-  async deleteCity(id) {
+  async deleteStation(id) {
     try {
-      await City.destroy({
+      await Station.destroy({
         where: {
           id,
         },
       });
       return true;
     } catch (error) {
-      console.log('something went wrong while deleting city');
+      console.log('something went wrong while deleting station');
       throw { error };
     }
   }
-  async updateCity(cityId, data) {
+  async updateStation(stationId, data) {
     try {
-      const city = await City.findByPk(cityId);
-      city.name = data.name;
-      await city.save();
-      return city;
+      const station = await Station.findByPk(stationId);
+      Object.keys(data).forEach((key) => {
+        if (station[key] !== undefined) {
+          station[key] = data[key];
+        }
+      });
+
+      await station.save();
+      return station;
     } catch (error) {
-      console.log('something went wrong while updating the city');
+      console.log('something went wrong while updating the station');
       throw { error };
     }
   }
-  async getCity(cityId) {
+  async getStation(stationId) {
     try {
-      const city = await City.findByPk(cityId);
-      return city;
+      const station = await Station.findByPk(stationId);
+      return station;
     } catch (error) {
-      console.log('Something went wrong while fetching city');
+      console.log('Something went wrong while fetching station');
       throw { error };
     }
   }
-  async getAllCities(filter) {
+  async getAllStation(filter) {
     try {
       if (filter.name) {
-        const cities = await City.findAll({
+        const stations = await Station.findAll({
           where: {
             name: {
               [Op.startsWith]: filter.name,
@@ -62,10 +67,10 @@ class StationRepository {
           },
           limit: 5,
         });
-        return cities;
+        return stations;
       }
-      const cities = await City.findAll();
-      return cities;
+      const stationList = await Station.findAll();
+      return stationList;
     } catch (error) {
       console.log('Something went wrong in the repository layer');
       throw { error };
@@ -73,4 +78,4 @@ class StationRepository {
   }
 }
 
-module.exports = CityRepository;
+module.exports = StationRepository;
