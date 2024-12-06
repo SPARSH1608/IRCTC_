@@ -4,8 +4,8 @@ class TrainStopService {
   constructor() {
     this.trainstoprepository = new TrainStopRepository();
   }
-  async createStation(data) {
-    console.log(data);
+  async createTrainStop(data) {
+    console.log('insied service', data);
     try {
       const response = await this.trainstoprepository.createTrainStop(data);
       return response;
@@ -14,7 +14,7 @@ class TrainStopService {
       throw { error };
     }
   }
-  async deleteStation(trainstopId) {
+  async deleteTrainStop(trainstopId) {
     try {
       const response = await this.trainstoprepository.deleteTrainStop(
         trainstopId
@@ -25,7 +25,7 @@ class TrainStopService {
       throw { error };
     }
   }
-  async updateStation(trainstopId, data) {
+  async updateTrainStop(trainstopId, data) {
     try {
       const response = await this.trainstoprepository.updateTrainStop(
         trainstopId,
@@ -38,7 +38,7 @@ class TrainStopService {
     }
   }
 
-  async getStation(trainstopId) {
+  async getTrainStop(trainstopId) {
     try {
       console.log(trainstopId);
       const response = await this.trainstoprepository.getTrainStop(trainstopId);
@@ -48,7 +48,7 @@ class TrainStopService {
       throw { error };
     }
   }
-  async getAllStation(filter) {
+  async getAllTrainStop(filter) {
     try {
       const response = await this.trainstoprepository.getAllTrainStop({
         name: filter.name,

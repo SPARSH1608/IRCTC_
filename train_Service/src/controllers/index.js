@@ -3,4 +3,5 @@ module.exports = {
   StationController: require('./station-controller'),
   TrainInfoController: require('./trainInfo-controller'),
   CategoryController: require('./category-controller'),
+  TrainStopController: require('./trainstop-controller'),
 };

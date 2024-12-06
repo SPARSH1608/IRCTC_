@@ -35,8 +35,7 @@ module.exports = (sequelize, DataTypes) => {
       dest_station_id: DataTypes.INTEGER,
       src_city_id: DataTypes.INTEGER,
       dest_city_id: DataTypes.INTEGER,
-      start_time: DataTypes.TIME,
-      end_time: DataTypes.TIME,
+
       start_date: DataTypes.DATE,
       end_date: DataTypes.DATE,
       days_of_operation: DataTypes.STRING,

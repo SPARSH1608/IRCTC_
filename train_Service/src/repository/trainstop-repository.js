@@ -9,9 +9,10 @@ class TrainStopRepository {
     dest_station_id,
     dest_city_id,
     src_city_id,
-    start_time,
-    end_time,
+
     days_of_operation,
+    start_date,
+    end_date,
   }) {
     try {
       const trainstop = await TrainStop.create({
@@ -20,13 +21,14 @@ class TrainStopRepository {
         dest_station_id,
         dest_city_id,
         src_city_id,
-        start_time,
-        end_time,
+
         days_of_operation,
+        start_date,
+        end_date,
       });
       return trainstop;
     } catch (error) {
-      console.log('something went wrong while creating trainstop');
+      console.log('something went wrong while creating trainstop', error);
       throw { error };
     }
   }
