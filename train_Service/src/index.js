@@ -15,8 +15,5 @@ const startServer = async () => {
       db.sequelize.sync({ alter: true });
     }
   });
-  const obj = new CityRepository();
-  obj.createCity({ name: 'Mumabai' });
-  obj.createCity({ name: 'New Delhi' });
 };
 startServer();
