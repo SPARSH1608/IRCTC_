@@ -4,4 +4,5 @@ module.exports = {
   TrainInfoRepository: require('./train-repository'),
   CategoryRepository: require('./category-repository'),
   TrainStopRepository: require('./trainstop-repository'),
+  BookingRepository: require('./booking-repository'),
 };

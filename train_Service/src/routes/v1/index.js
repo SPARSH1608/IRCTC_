@@ -7,6 +7,7 @@ const {
   TrainInfoController,
   CategoryController,
   TrainStopController,
+  BookingController,
 } = require('../../controllers/index');
 
 router.get('/city', CityController.getAll);
@@ -38,5 +39,7 @@ router.get('/trainstop', TrainStopController.getAll);
 router.delete('/trainstop/:id', TrainStopController.destroy);
 router.get('/trainstop/:id', TrainStopController.get);
 router.patch('/trainstop/:id', TrainStopController.update);
+
+router.post('/bookings', BookingController.create);
 
 module.exports = router;

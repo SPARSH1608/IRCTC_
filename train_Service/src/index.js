@@ -6,6 +6,7 @@ const db = require('./models/index');
 const ApiRoutes = require('./routes/index');
 const startServer = async () => {
   const app = express();
+  app.use(express.json());
   app.use(bodyParser.json());
   app.use(bodyParser.urlencoded({ extended: true }));
   app.use('/api', ApiRoutes);

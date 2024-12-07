@@ -4,4 +4,5 @@ module.exports = {
   TrainInfoController: require('./trainInfo-controller'),
   CategoryController: require('./category-controller'),
   TrainStopController: require('./trainstop-controller'),
+  BookingController: require('./booking-controller'),
 };

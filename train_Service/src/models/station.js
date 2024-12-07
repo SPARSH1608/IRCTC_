@@ -21,6 +21,14 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: 'dest_station_id',
         as: 'DestinationTrainStops',
       });
+      this.hasMany(models.Booking, {
+        foreignKey: 'src_station_id',
+        as: 'SourceBookings',
+      });
+      this.hasMany(models.Booking, {
+        foreignKey: 'dest_station_id',
+        as: 'DestinationBookings',
+      });
     }
   }
   Station.init(
